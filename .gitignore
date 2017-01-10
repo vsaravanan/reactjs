@@ -1,2 +1,8 @@
+.DS_Store
+node_modules
+.tmp
+./builds/app/js/app.js
+reactinterface/builds/app/js/app.js
 react-js-tutorials-src
 react-router-tutorial-src
+reactinterfaceTmp
