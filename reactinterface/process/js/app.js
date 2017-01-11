@@ -7,11 +7,10 @@ var AddAppointment = require('./AddAppointment');
 var MainInterface = React.createClass({
   getInitialState: function () {
     return {
-      myAppointments: [],
-      title: 'Appointments',
-      show: true
-    }
-  },
+      aptBodyVisible: false,
+      myAppointments: []
+    } //return
+  }, //getInitialState
 
   componentDidMount: function() {
     this.serverRequest = $.get('./js/data.json', function(result) {
@@ -34,17 +33,14 @@ var MainInterface = React.createClass({
     }); //setState
   }, //deleteMessage
 
+  toggleAddDisplay: function() {
+    var tempVisibility = !this.state.aptBodyVisible;
+    this.setState({
+      aptBodyVisible: tempVisibility
+    }); //setState
+  }, //toggleAddDisplay
 
   render: function() {
-    var showTitle;
-    if (this.state.show) {
-      showTitle = 'New ';
-    }
-
-    var displayList = {
-      display: this.state.show ? 'block' : 'none',
-      color : 'red'
-    }
 
     var filteredApts = this.state.myAppointments;
     filteredApts = filteredApts.map(function(item, index) {
@@ -52,25 +48,16 @@ var MainInterface = React.createClass({
         <AptList key = { index }
           singleItem = { item }
           whichItem = { item }
-          onDelete = { this.deleteMessage }
-           />
+          onDelete = { this.deleteMessage } />
       ) //return
     }.bind(this)); //filteredApts.map
     
     return (
       <div className="interface">
-      <AddAppointment />
-        <h1>
-          {showTitle}
-
-          {this.state.title}
-        </h1>
-        <ul style={displayList}>
-          <li>Buffy 3:30 PM</li>
-          <li>Spot 8:30 PM</li>
-          <li>Goldie 3:50 PM</li>
-        </ul>
-
+        <AddAppointment
+          bodyVisible = { this.state.aptBodyVisible }
+          handleToggle = { this.toggleAddDisplay }
+        />
         <ul className="item-list media-list">{filteredApts}</ul>	
 	
       </div>
