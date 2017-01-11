@@ -7,7 +7,7 @@ var AddAppointment = require('./AddAppointment');
 var MainInterface = React.createClass({
   getInitialState: function () {
     return {
-      aptBodyVisible: false,
+      aptBodyVisible: true,
       myAppointments: []
     } //return
   }, //getInitialState
@@ -34,9 +34,9 @@ var MainInterface = React.createClass({
   }, //deleteMessage
 
   toggleAddDisplay: function() {
-    var tempVisibility = !this.state.aptBodyVisible;
+    //var tempVisibility = !this.state.aptBodyVisible;
     this.setState({
-      aptBodyVisible: tempVisibility
+      aptBodyVisible: !this.state.aptBodyVisible
     }); //setState
   }, //toggleAddDisplay
 

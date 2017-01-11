@@ -1,12 +1,19 @@
 var React = require('react');
 
 var AddAppointment = React.createClass({
+
+
+
   render: function() {
+    var displayAptBody = {
+      display: this.props.bodyVisible ? 'block' : 'none'
+    };
+
     return(
       <div className="panel panel-primary">
         <div className="panel-heading apt-addheading">
         <span className="glyphicon glyphicon-plus"></span> Add Appointment</div>
-        <div className="panel-body">
+        <div className="panel-body" style={ displayAptBody } >
           <form className="add-appointment form-horizontal">
             <div className="form-group">
               <label className="col-sm-2 control-label" for="petName">Pet Name</label>
