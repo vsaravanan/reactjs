@@ -12,6 +12,7 @@ var MainInterface = React.createClass({
       aptBodyVisible: false,
       orderBy: 'petName',
       orderDir: 'asc',
+      queryText: '',
       myAppointments: []
     } //return
   }, //getInitialState
@@ -59,11 +60,31 @@ var MainInterface = React.createClass({
     }); //setState
   }, //reOrder
 
-  render: function() {
+  searchApts(q) {
+    this.setState({
+      queryText: q
+    }); //setState
+  }, //searchApts
 
-    var filteredApts = this.state.myAppointments;
+  render: function() {
+    var filteredApts = [];
+    //var filteredApts = this.state.myAppointments;
     var orderBy = this.state.orderBy;
     var orderDir = this.state.orderDir;
+    
+    var queryText = this.state.queryText;
+    var myAppointments = this.state.myAppointments;     
+
+    myAppointments.forEach(function(item) {
+      if(
+        (item.petName.toLowerCase().indexOf(queryText)!=-1) ||
+        (item.ownerName.toLowerCase().indexOf(queryText)!=-1) ||
+        (item.aptDate.toLowerCase().indexOf(queryText)!=-1) ||
+        (item.aptNotes.toLowerCase().indexOf(queryText)!=-1)
+      ) {
+        filteredApts.push(item);
+      }
+    }); //forEach
 
     filteredApts = _.orderBy(filteredApts, function(item) {
       return item[orderBy].toLowerCase();
@@ -89,6 +110,7 @@ var MainInterface = React.createClass({
           orderBy = {this.state.orderBy} 
           orderDir = {this.state.orderDir}
           onReOrder = { this.reOrder }
+          onSearch = { this.searchApts }
         />
         <ul className="item-list media-list">{filteredApts}</ul>	
 	
