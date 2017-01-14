@@ -31,13 +31,17 @@ var Forum = React.createClass({
                     <hr />
                     <ForumAnswers allAnswers={ this.state.allAnswers } />
                     <hr />
-                    <ForumAddAnswerBox />
+                    <ForumAddAnswerBox onAddAnswer={ this._onAddAnswer } />
                 </div>
             </div>
-        );
-        
+        )
+    },
     
-        
+    _onAddAnswer: function(answerText) {
+        ForumDispatcher.dispatch({
+            actionType: 'FORUM_ANSWER_ADDED',
+            newAnswer: answerText
+        });
     }
     
 });
