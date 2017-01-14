@@ -7,6 +7,12 @@ var Forum = React.createClass({
         }
         
     },
+    componentDidMount: function() {
+        ForumStore.addChangeListener(this._onChange);  
+    },
+    componentWillUnmount: function() {
+        ForumStore.removeListener(this._onChange);
+    },
    
     render: function() {
         
@@ -24,6 +30,9 @@ var Forum = React.createClass({
         )
     },
     
+    _onChange: function() {
+        this.setState({ allAnswers: ForumStore.getAnswers() });
+    },
     _onAddAnswer: function(answerText) {
         ForumActions.addNewAnswer(answerText);
     }
