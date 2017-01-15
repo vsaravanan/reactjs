@@ -1,3 +1,5 @@
+var ForumDispatcher = require('../dispatcher/ForumDispatcher');
+var ForumConstants = require('../constants/ForumConstants');
 var ForumActions = {
     
     markAnswerCorrect: function(id) {
@@ -14,4 +16,5 @@ var ForumActions = {
         });
     }
     
-}
+};
+module.exports = ForumActions;

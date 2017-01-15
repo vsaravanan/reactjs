@@ -1,5 +1,9 @@
-React.render(
-    <Forum />,  document.getElementById('forum')
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Forum = require('./components/Forum.react');
+ReactDOM.render(
+    <Forum />,
+    document.getElementById('forum')
     
 );
 // create an event emitter

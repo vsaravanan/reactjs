@@ -1,15 +1,34 @@
 {
-  "name": "react",
+  "name": "react-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "scripts": {
+    "start": "watchify js/app.js -o lib/app.js"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-react": "^6.16.0"
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.3.0",
+    "watchify": "^3.8.0"
   },
-  "scripts": {
-    "build": "babel js -d lib --presets react"
-  }  
+  "dependencies": {
+    "flux": "^2.1.1",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "react"
+          ]
+        }
+      ]
+    ]
+  }
 }

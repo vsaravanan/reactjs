@@ -1,3 +1,4 @@
+var React = require('react');
 var ForumAddAnswerBox = React.createClass({
     
     getInitialState: function() {
@@ -26,3 +27,4 @@ var ForumAddAnswerBox = React.createClass({
     }
 
 });
+module.exports = ForumAddAnswerBox;

@@ -1,3 +1,4 @@
+var React = require('react');
 var ForumAnswer = React.createClass({
 
     propTypes: {
@@ -36,3 +37,4 @@ var ForumAnswer = React.createClass({
     }
 
 });
+module.exports = ForumAnswer;

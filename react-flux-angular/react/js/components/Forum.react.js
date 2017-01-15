@@ -1,3 +1,10 @@
+var React = require('react');
+var ForumHeader = require('./ForumHeader.react');
+var ForumQuestion = require('./ForumQuestion.react');
+var ForumAnswers = require('./ForumAnswers.react');
+var ForumAddAnswerBox = require('./ForumAddAnswerBox.react');
+var ForumActions = require('../actions/ForumActions');
+var ForumStore = require('../stores/ForumStore');
 var Forum = React.createClass({
     
     getInitialState: function() {
@@ -27,7 +34,7 @@ var Forum = React.createClass({
                     <ForumAddAnswerBox onAddAnswer={ this._onAddAnswer } />
                 </div>
             </div>
-        )
+        );
     },
     
     _onChange: function() {
@@ -38,3 +45,4 @@ var Forum = React.createClass({
     }
     
 });
+module.exports = Forum;
