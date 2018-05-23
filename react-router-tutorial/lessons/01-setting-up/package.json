@@ -4,11 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-
-  },  
-
-  "scripts": {
-    "start:prodold": "webpack && node server.js", 
+    "start:prodold": "webpack && node server.js",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:dev": "webpack-dev-server --inline --hot --content-base . --history-api-fallback",
     "start:prod": "npm run build && node server.bundle.js",
@@ -16,7 +12,6 @@
     "build:server": "webpack --config webpack.server.config.js",
     "build": "npm run build:client && npm run build:server"
   },
-
   "author": "",
   "license": "ISC",
   "dependencies": {
