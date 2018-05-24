@@ -1,3 +1,6 @@
-import FormContainer from './components/container/FormContainer';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log('Hey guys and lhhadies!!')
+import App from './App';
+
+ReactDOM.render(<App />, document.getElementById('root'));

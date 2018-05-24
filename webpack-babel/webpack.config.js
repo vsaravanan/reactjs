@@ -7,6 +7,11 @@ module.exports = {
       path: path.join(__dirname, 'dist'),
       filename: 'app.js'
     },
+    resolve: {
+      alias: {
+        'components': path.resolve(__dirname , './src/components')
+      }
+    },
     module: {
         rules: [
           { test: /\.css$/,
@@ -21,13 +26,9 @@ module.exports = {
             use: "babel-loader"
           }
         ]
-      },
-      plugins: [
-        new HtmlWebpackPlugin({
-          template: "./src/index.html",
-          filename: "./index.html"
-        })
-      ]
+      }
+     
+
 
 
 }
