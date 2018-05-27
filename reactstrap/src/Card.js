@@ -1,10 +1,10 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardLink,
-  CardTitle, CardSubtitle, Button, Row, Col, CardHeader, CardFooter  } from 'reactstrap';
+  CardTitle, CardSubtitle, Button, Row, Col, CardHeader, CardFooter, CardColumns  } from 'reactstrap';
 
 const Example = (props) => {
     return (
-      <div>
+      <CardColumns>
         <Card body inverse style={{ backgroundColor: '#333', borderColor: '#333' }}>
           <CardTitle>Special Title Treatment</CardTitle>
           <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
@@ -45,7 +45,7 @@ const Example = (props) => {
           <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
           <Button color="secondary">Button</Button>
         </Card>
-      </div>
+      </CardColumns>
     );
   };
   
