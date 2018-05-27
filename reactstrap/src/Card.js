@@ -15,6 +15,16 @@ const Example = (props) => {
           <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
           <Button color="secondary">Button</Button>
         </Card>
+        <Card body color="primary">
+            <CardTitle>Special Title Treatment</CardTitle>
+            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+            <Button color="secondary">Button</Button>
+        </Card>
+        <Card body outline color="primary">
+            <CardTitle>Special Title Treatment</CardTitle>
+            <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
+            <Button color="secondary">Button</Button>
+        </Card>
         <Card body inverse color="success">
           <CardTitle>Special Title Treatment</CardTitle>
           <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
