@@ -4,12 +4,12 @@ import {
   Card,
   CardTitle,
   CardBody,
-  CardImg,
+  // CardImg,
   // CardImgOverlay,
   CardText,
-  CardLink,
-  ListGroup,
-  ListGroupItem,
+  // CardLink,
+  // ListGroup,
+  // ListGroupItem,
   Row,
   Col,
   Button,
@@ -22,18 +22,18 @@ import {
 // import { getStackLineChart, stackLineChartOptions } from 'demos/chartjs';
 
 import Page from 'components/Page';
-import UserCard from 'components/Card/UserCard';
+// import UserCard from 'components/Card/UserCard';
 
-import bg1Image from 'assets/img/bg/background_640-1.jpg';
-import bg3Image from 'assets/img/bg/background_640-3.jpg';
-import bg11Image from 'assets/img/bg/background_1920-11.jpg';
-import bg18Image from 'assets/img/bg/background_1920-18.jpg';
-import user1Image from 'assets/img/users/100_1.jpg';
+// import bg1Image from 'assets/img/bg/background_640-1.jpg';
+// import bg3Image from 'assets/img/bg/background_640-3.jpg';
+// import bg11Image from 'assets/img/bg/background_1920-11.jpg';
+// import bg18Image from 'assets/img/bg/background_1920-18.jpg';
+// import user1Image from 'assets/img/users/100_1.jpg';
 
 const CardPage = () => {
   return (
     <Page title="Cards" breadcrumbs={[{ name: 'cards', active: true }]}>
-      <Row>
+      {/* <Row>
         <Col md={6} sm={6} xs={12} className="mb-3">
           <Card className="flex-row">
             <CardImg
@@ -103,7 +103,7 @@ const CardPage = () => {
             </CardBody>
           </Card>
         </Col>
-      </Row>
+      </Row> */}
 
       <Row>
         {['', 'top', 'left', 'right'].map(color => (
@@ -153,7 +153,7 @@ const CardPage = () => {
         })}
       </Row> */}
 
-      <Row>
+      {/* <Row>
         <Col md={5}>
           <UserCard
             avatar={user1Image}
@@ -167,7 +167,7 @@ const CardPage = () => {
         </Col>
 
         <Col md={7}>
-          {/* <Card>
+          {<Card>
             <Line
               data={getStackLineChart({
                 labels: [
@@ -186,9 +186,9 @@ const CardPage = () => {
             <CardBody className="text-primary" style={{ position: 'absolute' }}>
               <CardTitle>Chart Card</CardTitle>
             </CardBody>
-          </Card> */}
+          </Card> }
         </Col>
-      </Row>
+      </Row> */}
 
       {/* <Row>
         {bgCards.map(({ color }) => (
