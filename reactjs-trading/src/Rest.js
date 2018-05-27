@@ -1,33 +1,29 @@
 import axios from "axios";
 import React, { Component } from 'react' ;
-import ContactList from 'ContactList';
+import CompanyList from 'CompanyList';
 
 class Rest extends Component {
 
   // default State object
   state = {
-    contacts: []
+    company: []
   };
 
   componentDidMount() {
     axios
-      .get("https://jsonplaceholder.typicode.com/users/2")
+      .get("https://api.iextrading.com/1.0/stock/aapl/company")
       .then(response => {
         const Store = [].concat(response.data) ;
 
 
-        // create an array of contacts only with relevant data
-        const newContacts = Store.map(c => {
-          return {
-            id: c.id,
-            name: c.name
-          };
-        });
+
+        //console.log(Store);
+        //const newCompanies = Store.map(c => c);
 
         // create a new "State" object without mutating 
         // the original State object. 
         const newState = Object.assign({}, this.state, {
-          contacts: newContacts
+          company: Store
         });
 
         // store the new state object in the component's state
@@ -39,7 +35,7 @@ class Rest extends Component {
   render() {
     return (
       <div className="App">
-        <ContactList contacts={this.state.contacts} />
+        <CompanyList company={this.state.company} />
       </div>
     );
   }
