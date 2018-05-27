@@ -1,25 +1,30 @@
 import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardLink,
-  CardTitle, CardSubtitle, Button, Row, Col  } from 'reactstrap';
+  CardTitle, CardSubtitle, Button, Row, Col, CardHeader, CardFooter  } from 'reactstrap';
 
 const Example = (props) => {
   return (
-    <Row>
-      <Col sm="6">
-        <Card body>
+    <div>
+      <Card>
+        <CardHeader>Header</CardHeader>
+        <CardBody>
           <CardTitle>Special Title Treatment</CardTitle>
           <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
           <Button>Go somewhere</Button>
-        </Card>
-      </Col>
-      <Col sm="6">
-        <Card body>
+        </CardBody>
+        <CardFooter>Footer</CardFooter>
+      </Card>
+
+      <Card>
+        <CardHeader tag="h3">Featured</CardHeader>
+        <CardBody>
           <CardTitle>Special Title Treatment</CardTitle>
           <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
           <Button>Go somewhere</Button>
-        </Card>
-      </Col>
-    </Row>
+        </CardBody>
+        <CardFooter className="text-muted">Footer</CardFooter>
+      </Card>
+    </div>
   );
 };
 
