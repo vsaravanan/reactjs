@@ -13,7 +13,6 @@ class CompanyData extends Component {
 
 
   getPeers = (stockId) => {
-    console.log(`${stockId}`);
     return (
       axios
         .get(`https://api.iextrading.com/1.0/stock/${stockId}/peers`)
@@ -22,7 +21,7 @@ class CompanyData extends Component {
           const Peers = [].concat(response.data) ;
 
   
-          console.log('Peers : ' + Peers);
+          //console.log('Peers : ' + Peers);
           const newPeers = Object.assign({}, this.state, {
             peers: Peers
           });
@@ -38,15 +37,19 @@ class CompanyData extends Component {
       axios
         .get(`https://api.iextrading.com/1.0/stock/${stockId}/company`)
         .then(response => {
-          const Company = [].concat(response.data) ;
+
+          const Company = response.data ;
   
+          const companyConcated = [ ...this.state.company, Company];
+          
           const companyArr = Object.assign({}, this.state, {
-            company: Company
+            company: companyConcated
           });
 
-          console.log(companyArr.company[0]);
-  
-          this.setState(companyArr);
+
+
+          this.setState(  companyArr);
+
         })
         .catch(error => console.log(error))
     );
@@ -55,8 +58,6 @@ class CompanyData extends Component {
   getAll = async (stockId) => {
     try {
       await this.getPeers(stockId);
-
-      console.log('state ' + this.state.peers);
 
       await this.getCompany(stockId);
 
