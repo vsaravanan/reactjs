@@ -1,7 +1,7 @@
 
 import React from 'react' ;
 // import the Contact component
-import Company from "./Company";
+import Company from 'components/Stock/Company';
 
 
 function CompanyList(props) {

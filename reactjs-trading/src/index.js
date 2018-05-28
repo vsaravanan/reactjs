@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-//import App from './App';
-import Rest from './Rest';
+import App from './App';
+import CompanyData from 'components/Stock/CompanyData';
 
-ReactDOM.render(<Rest />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
