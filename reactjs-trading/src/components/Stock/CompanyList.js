@@ -74,9 +74,11 @@ class CompanyList extends Component {
 
                 <CardBody className="d-flex justify-content-between align-items-center">
                   <CardText>{company.ceo}</CardText>
+                  <CardLink href={"/#/stock/" + company.symbol}  >
                   <Button outline color="light">
                     Click
                   </Button>
+                  </CardLink>
                 </CardBody>
               </Card>
             </Col>
