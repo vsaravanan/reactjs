@@ -2,19 +2,16 @@ import axios from "axios";
 import React, { Component } from 'react' ;
 import CompanyList from 'components/Stock/CompanyList';
 import store from 'reducers/store.js';
+import { toggleLoading } from 'reducers/actions/state-actions';
+import {connect } from 'react-redux';
 
-//const CompanyData = ({stockId}) => {
 class CompanyData extends Component {
 
-  unsubscribe = store.subscribe(() =>
-    console.log(store.getState())
-  );
 
   // default State object
   state = {
     peers: [],
-    company: [],
-    stockId : this.props.stockId
+    company: []
   };
 
   getPeers = (stockId) => {
@@ -33,10 +30,22 @@ class CompanyData extends Component {
   
           this.setState(newPeers);
         })
-        .catch(error => console.log(error))
+        .catch(error =>  {
+          console.log(error);
+          
+        })
     );
   }
   
+  sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+  }
+
   getCompany = (stockId) => {
     return (
       axios
@@ -55,21 +64,38 @@ class CompanyData extends Component {
 
           this.setState(  companyArr);
 
+          if (this.props.loading === 't') {
+             //this.sleep(1000);
+            store.dispatch(toggleLoading('f'));
+          }
+
+
         })
-        .catch(error => console.log(error))
+        .catch(error =>  {
+          console.log(error);
+        })
     );
   }
+
   
   getAll = async (stockId) => {
     try {
       await this.getPeers(stockId);
 
+      if (this.state.peers.length === 0) {
+        // if not found return and don't process further
+        return;
+      }
+      
       await this.getCompany(stockId);
 
       this.state.peers.filter(peers => peers !== stockId).map( (peers) =>
         {
             return this.getCompany(peers);
         })
+      ;
+
+
 
       
     }
@@ -78,14 +104,37 @@ class CompanyData extends Component {
     }
   }
 
-  componentWillMount() {
-      if (this.state.stockId !== null) {
-        this.getAll(this.state.stockId);
+
+
+  fetch() {
+
+    store.dispatch(toggleLoading('t'));
+    this.setState({
+      peers: [],
+      company: []
+    });
+    let stockId = store.getState().states.stockId;
+    if (stockId !== null) {
+      this.getAll(stockId);
+    }  
+ 
+  }
+
+
+  componentDidMount() {
+    this.unsubscribe = store.subscribe(() =>
+      {
+        console.log(store.getState());
+        //this.forceUpdate();
       }
-      let stockId = store.getState().states.stockId;
-      if (stockId !== null) {
-        this.getAll(stockId);
-      }
+    );     
+  }
+
+  componentWillUpdate(nextProps) {
+
+    if (nextProps.stockId !== this.props.stockId) {
+      this.fetch();
+    }
   }
 
   componentWillUnmount() {
@@ -93,12 +142,30 @@ class CompanyData extends Component {
   }
 
   render() {
+
+    let data;
+    // if (this.state.loading) {
+    //   data = <img src={ require('assets/img/preloader.gif')}  alt="Loading..." />
+    // } else {
+      data = (
+        <div className="App">
+          <CompanyList company={this.state.company}  />
+        </div>
+      );
+ 
     return (
-      <div className="App">
-        <CompanyList company={this.state.company} />
-      </div>
+      <div>{data}</div>
     );
+  
   }
 }
 
-export default CompanyData;
+
+const mapStateToProps = (state) => {
+  return {
+    stockId : store.getState().states.stockId,
+    loading : store.getState().loadings.loading
+  }
+};
+
+export default connect(mapStateToProps)(CompanyData);

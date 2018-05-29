@@ -7,12 +7,11 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
       case UPDATE_STOCKID: {
-        return {
+        return  {
           ...state,
-          stockId: action.payload.stockId
+          stockId: action.payload.stockId          
         }
       }
-
       default:
         return state;
     }

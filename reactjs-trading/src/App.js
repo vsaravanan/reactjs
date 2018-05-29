@@ -17,9 +17,9 @@ const getBasename = () => {
 class App extends React.Component {
 
 
-  state = {
-    stockId : 'orcl'
-  }
+  // state = {
+  //   stockId : 'orcl'
+  // }
 
   static isSidebarOpen() {
     return document
@@ -83,7 +83,7 @@ class App extends React.Component {
               <Header />
               <Switch>
                 <Route exact path="/" component={CardPage} />  
-                <Route path="/cards" component={() => <CompanyData stockId={this.state.stockId} />}  />
+                <Route path="/cards" component={CompanyData}  />
                 <Redirect to="/" />
               </Switch>
               <Footer />
