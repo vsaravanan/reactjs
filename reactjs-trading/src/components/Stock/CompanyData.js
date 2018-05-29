@@ -1,16 +1,21 @@
 import axios from "axios";
 import React, { Component } from 'react' ;
 import CompanyList from 'components/Stock/CompanyList';
+import store from 'reducers/store.js';
 
-
+//const CompanyData = ({stockId}) => {
 class CompanyData extends Component {
+
+  unsubscribe = store.subscribe(() =>
+    console.log(store.getState())
+  );
 
   // default State object
   state = {
     peers: [],
-    company: []
+    company: [],
+    stockId : this.props.stockId
   };
-
 
   getPeers = (stockId) => {
     return (
@@ -73,8 +78,18 @@ class CompanyData extends Component {
     }
   }
 
-  componentDidMount() {
-    this.getAll('aapl');
+  componentWillMount() {
+      if (this.state.stockId !== null) {
+        this.getAll(this.state.stockId);
+      }
+      let stockId = store.getState().states.stockId;
+      if (stockId !== null) {
+        this.getAll(stockId);
+      }
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   render() {

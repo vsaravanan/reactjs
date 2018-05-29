@@ -30,7 +30,7 @@ import {
 // import Avatar from 'components/Avatar';
 // import { UserCard } from 'components/Card';
 // import Notifications from 'components/Notifications';
-// import SearchInput from 'components/SearchInput';
+import SearchInput from 'components/SearchInput';
 
 // import withBadge from 'hocs/withBadge';
 
@@ -90,6 +90,9 @@ class Header extends React.Component {
           <Button outline onClick={this.handleSidebarControlButton}>
             <MdClearAll size={25} />
           </Button>
+        </Nav>
+        <Nav navbar>
+          <SearchInput />
         </Nav>
         {/* <Nav navbar>
           <SearchInput />

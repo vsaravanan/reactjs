@@ -1,12 +1,15 @@
 import PropTypes from "prop-types";
 import React from 'react' ;
 
+// import classNames from 'classnames';
+// import { Card, CardTitle, CardSubtitle, CardText, CardBody } from 'reactstrap';
 
 const Company = (props) => {
-
+  //const classes = classNames('bg-gradient-theme', className);
   const company = props.company || {};
 
   return (
+
     <div className="company">
       <div>{company.symbol}</div>
       <div>{company.companyName}</div>
@@ -18,6 +21,7 @@ const Company = (props) => {
       <div>{company.issueType}</div>
       <div>{company.sector}</div>
     </div>
+
   );
 }
 

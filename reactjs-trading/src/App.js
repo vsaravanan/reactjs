@@ -5,6 +5,7 @@ import { Header, Sidebar, Content, Footer } from 'components/Layout';
 import componentQueries from 'react-component-queries';
 
 import CardPage from 'pages/CardPage';
+import CompanyData from 'components/Stock/CompanyData';
 
 
 import './styles/reduction.css';
@@ -14,6 +15,12 @@ const getBasename = () => {
 };
 
 class App extends React.Component {
+
+
+  state = {
+    stockId : 'orcl'
+  }
+
   static isSidebarOpen() {
     return document
       .querySelector('.cr-sidebar')
@@ -76,7 +83,7 @@ class App extends React.Component {
               <Header />
               <Switch>
                 <Route exact path="/" component={CardPage} />  
-                <Route path="/cards" component={CardPage} />
+                <Route path="/cards" component={() => <CompanyData stockId={this.state.stockId} />}  />
                 <Redirect to="/" />
               </Switch>
               <Footer />
