@@ -54,7 +54,7 @@ class CompanyList extends Component {
   }
 
   render() {
-  console.log(this.props.loading);
+  //console.log(this.props.loading);
    
   return (
       <Page title="Company Cards" breadcrumbs={[{ name: 'cards', active: true }]}>

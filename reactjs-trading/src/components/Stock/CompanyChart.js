@@ -146,7 +146,6 @@ class CompanyChart extends Component {
   }
 
   componentWillMount() {
-    console.log("this.props.stockId 1 : " + this.props.stockId);    
     this.fetch();
   }
 
@@ -159,8 +158,6 @@ class CompanyChart extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    console.log("nextProps.stockId : " + nextProps.stockId);
-    console.log("this.props.stockId 2 : " + this.props.stockId);
     if (nextProps.stockId !== this.props.stockId) {
       this.fetch();
     }
@@ -178,8 +175,7 @@ class CompanyChart extends Component {
   view() {
     let stockId = store.getState().states.stockId;
 
-    //console.log(this.state.chart);
-    console.log(this.columns);
+
 
     if (stockId === null ) {
       return (<div> search for stock Id </div>);
@@ -190,7 +186,7 @@ class CompanyChart extends Component {
     const { data } = this.state;
 
     
-    console.log({data});
+
     return ( <div>
       <ReactTable
         columns={this.columns}
