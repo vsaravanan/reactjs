@@ -140,7 +140,7 @@ class CompanyChart extends Component {
     });
     let stockId = store.getState().states.stockId;
     if (stockId !== null) {
-      this.getAll(stockId, '1m');
+      this.getAll(stockId, this.props.duration);
     }  
  
   }
