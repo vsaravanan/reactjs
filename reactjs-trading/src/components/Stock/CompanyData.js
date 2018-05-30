@@ -137,6 +137,10 @@ class CompanyData extends Component {
     }
   }
 
+  componentWillMount() {
+    this.fetch();
+  }  
+
   componentWillUnmount() {
     this.unsubscribe();
   }

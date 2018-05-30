@@ -8,12 +8,12 @@ import {
   NavItem,
   NavLink as BSNavLink,
   // UncontrolledTooltip,
-  //Collapse,
+  // Collapse,
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 import {
-  MdDashboard,
+  //MdDashboard,
   MdWeb,
   //MdInsertChart,
   // MdWidgets,
@@ -23,7 +23,7 @@ import {
   // MdRadioButtonChecked,
   // MdStar,
   // MdGroupWork,
-  // MdArrowDropDownCircle,
+  MdArrowDropDownCircle,
   // MdBrush,
   // MdViewDay,
   // MdChromeReaderMode,
@@ -46,25 +46,25 @@ const sidebarBackground = {
 };
 
 // const navComponents = [
-//   { to: '/buttons', name: 'buttons', exact: false, Icon: MdRadioButtonChecked },
-//   {
-//     to: '/button-groups',
-//     name: 'button groups',
-//     exact: false,
-//     Icon: MdGroupWork,
-//   },
-//   { to: '/forms', name: 'forms', exact: false, Icon: MdChromeReaderMode },
-//   { to: '/input-groups', name: 'input groups', exact: false, Icon: MdViewList },
+//   // { to: '/buttons', name: 'buttons', exact: false, Icon: MdRadioButtonChecked },
+//   // {
+//   //   to: '/button-groups',
+//   //   name: 'button groups',
+//   //   exact: false,
+//   //   Icon: MdGroupWork,
+//   // },
+//   // { to: '/forms', name: 'forms', exact: false, Icon: MdChromeReaderMode },
+//   // { to: '/input-groups', name: 'input groups', exact: false, Icon: MdViewList },
 //   {
 //     to: '/dropdowns',
 //     name: 'dropdowns',
 //     exact: false,
 //     Icon: MdArrowDropDownCircle,
 //   },
-//   { to: '/badges', name: 'badges', exact: false, Icon: MdStar },
-//   { to: '/alerts', name: 'alerts', exact: false, Icon: MdNotificationsActive },
-//   { to: '/progress', name: 'progress', exact: false, Icon: MdBrush },
-//   { to: '/modals', name: 'modals', exact: false, Icon: MdViewDay },
+//   // { to: '/badges', name: 'badges', exact: false, Icon: MdStar },
+//   // { to: '/alerts', name: 'alerts', exact: false, Icon: MdNotificationsActive },
+//   // { to: '/progress', name: 'progress', exact: false, Icon: MdBrush },
+//   // { to: '/modals', name: 'modals', exact: false, Icon: MdViewDay },
 // ];
 
 // const navContents = [
@@ -73,8 +73,9 @@ const sidebarBackground = {
 // ];
 
 const navItems = [
-  { to: '/', name: 'dashboard', exact: true, Icon: MdDashboard },
   { to: '/cards', name: 'cards', exact: false, Icon: MdWeb },
+//  { to: '/cards', name: 'cards', exact: true, Icon: MdWeb },
+  { to: '/dropdowns', name: 'dropdowns', exact: false, Icon: MdArrowDropDownCircle },
 //  { to: '/charts', name: 'charts', exact: false, Icon: MdInsertChart },
 //  { to: '/widgets', name: 'widgets', exact: false, Icon: MdWidgets },
 ];

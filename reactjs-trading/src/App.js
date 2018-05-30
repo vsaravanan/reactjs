@@ -4,9 +4,13 @@ import { Header, Sidebar, Content, Footer } from 'components/Layout';
 
 import componentQueries from 'react-component-queries';
 
-import CardPage from 'pages/CardPage';
-import CompanyData from 'components/Stock/CompanyData';
 
+import DropdownPage from 'pages/DropdownPage';
+import CompanyData from 'components/Stock/CompanyData';
+import CompanyChart from 'components/Stock/CompanyChart';
+
+import store from 'reducers/store.js';
+import { updateStockId } from 'reducers/actions/state-actions';
 
 import './styles/reduction.css';
 
@@ -82,8 +86,11 @@ class App extends React.Component {
             <Content fluid onClick={this.handleContentClick}>
               <Header />
               <Switch>
-                <Route exact path="/" component={CardPage} />  
-                <Route path="/cards" component={CompanyData}  />
+
+                <Route exact path="/cards" component={CompanyData}  />
+                <Route path="/dropdowns" component={DropdownPage} />     
+                <Route path="/stock/:stockId/chart/:duration" render={(props) => <GotoCompanyChart  {...props} />} />     
+                     
                 <Redirect to="/" />
               </Switch>
               <Footer />
@@ -96,6 +103,22 @@ class App extends React.Component {
     );
   }
 }
+
+const GotoCompanyChart = ({ match }) => 
+{      
+  let stockId=match.params.stockId;
+  store.dispatch(updateStockId(stockId));
+
+  return (
+    <div>
+      <h2>stockId: {match.params.stockId}</h2>
+      <h2>duration: {match.params.duration}</h2>
+      <CompanyChart  stockId={match.params.stockId} duration={match.params.duration} />
+    </div>
+
+  )
+}
+
 
 const query = ({ width }) => {
   if (width < 575) {
